@@ -23,7 +23,7 @@ const ImageBoxComponent: React.FC<IImageBox> = ({
       )}
     >
         <Image 
-          src={image}
+          src={image || DEFAULT_IMAGE.MOIM}
           alt={alt || '모임이미지'}
           fill
           className={cn(
