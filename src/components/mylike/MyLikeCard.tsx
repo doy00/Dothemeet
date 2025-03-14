@@ -5,7 +5,7 @@ import { HeartIcon } from '../detail/icons/HeartIcon';
 import { Separator } from '../ui/separator';
 import { formatDate } from '@/utils/detail/date';
 import { getMoimTypeText } from '@/utils/detail/enums';
-import { IMoimDetail } from '@/types/detail/t-moim';
+import { TMoimDetail } from '@/types/detail/t-moim';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useVisibleCard } from '@/hooks/mylike/useVisibleCard';
@@ -16,7 +16,7 @@ interface IStatusInfo {
 }
 
 interface IMyLikeCardProps {
-  moim: IMoimDetail;
+  moim: TMoimDetail;
   onClick: () => void;
   onRemoveLike: (e: React.MouseEvent) => void;
   isPriority: boolean;

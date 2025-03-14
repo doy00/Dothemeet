@@ -1,6 +1,6 @@
 // 모임 상세 조회 API 요청
 import axiosInstance from '@/apis/auth/axios.api';
-import { IMoimDetail, ILikeResponse, ILikedMoimsResponse, ApiResponse, IMoimMasterResponse } from '@/types/detail/t-moim';
+import { TMoimDetail, ILikeResponse, ILikedMoimsResponse, ApiResponse, IMoimMasterResponse } from '@/types/detail/t-moim';
 
 // 모임 상세 데이터(모임정보, 참여자, 리뷰) 전체 조회
 export const getDetail = async (moimId: string): Promise<IMoimMasterResponse> => {
@@ -11,16 +11,6 @@ export const getDetail = async (moimId: string): Promise<IMoimMasterResponse> =>
     throw error;
   }
 };
-
-// 모임 참여하기
-// export const joinMoim = async (moimId: string): Promise<void> => {
-//   await axiosInstance.post(`/api/moims/${moimId}/join`);
-// };
-
-// 모임 신청 취소하기
-// export const leaveMoim = async (moimId: string): Promise<void> => {
-//   await axiosInstance.delete(`/api/moims/${moimId}/leave`);
-// };
 
 // 특정 모임 찜 상태 조회 후 찜하기
 export const likeApi = {
@@ -39,12 +29,12 @@ export const likeApi = {
 
 // 특정 모임 신청하기
 export const joinApi = {
-  join: async (moimId: string): Promise<ApiResponse<IMoimDetail>> => {
+  join: async (moimId: string): Promise<ApiResponse<TMoimDetail>> => {
     const response = await axiosInstance.post(`/api/moims/${moimId}/join`);
     return response.data;
   },
 
-  leave: async (moimId: string): Promise<ApiResponse<IMoimDetail>> => {
+  leave: async (moimId: string): Promise<ApiResponse<TMoimDetail>> => {
     const response = await axiosInstance.delete(`/api/moims/${moimId}/leave`);
     return response.data;
   },

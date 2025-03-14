@@ -4,22 +4,28 @@ import { ERate } from "../supabase/supabase-custom.type";
 import { TMoimClient } from "../supabase/supabase-custom.type";
 
 // 모임 상세  (새로운 구조에 맞게 수정)
-export type IMoimDetail = TMoimClient;
+export type TMoimDetail = TMoimClient;
 
 // 모임 주최자 응답
 export type IMoimMasterResponse = {
-  moim: IMoimDetail;
+  moim: TMoimDetail;
   masterUser: TMe;
 };
 
 // 모임 목록 응답
 export interface IMoimListResponse {
-  data: IMoimDetail[];
+  data: TMoimDetail[];
   pagination: {
     totalItems: number;
     totalPages: number;
     currentPage: number;
   };
+}
+
+// 모임 응답
+export interface ApiResponse<T> {
+  data: T;
+  message?: string;
 }
 
 // 참여자 (새로운 구조에 맞게 수정)
@@ -51,7 +57,7 @@ export interface ILikeResponse {
 
 // 내가 찜한 목록 응답 (새로운 구조에 맞게 수정)
 export interface ILikedMoimsResponse {
-  data: IMoimDetail[];
+  data: TMoimDetail[];
   pagination: {
     totalItems: number;
     totalPages: number;

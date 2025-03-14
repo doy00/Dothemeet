@@ -2,7 +2,7 @@
 import { joinApi } from '@/apis/detail/detail.api';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useAuth } from '@/hooks/auth/auth.hook';
-import { IMoimDetail, IMoimMasterResponse } from '@/types/detail/t-moim';
+import { TMoimDetail, IMoimMasterResponse } from '@/types/detail/t-moim';
 import { QUERY_KEYS } from '@/constants/detail/detail.const';
 import { TMe } from '@/types/auth/auth.type';
 
@@ -21,12 +21,6 @@ export const useJoinMoim = (moimId: string, options: IUseJoinMoimOptions = {}) =
   const moimDetail = queryClient.getQueryData<IMoimMasterResponse>(
     QUERY_KEYS.MOIM_DETAIL(moimId)
   );
-  // 모임상세 조회
-  // const { data: moimDetail, isLoading: isLoadingDetail } = useQuery({
-  //   queryKey: QUERY_KEYS.MOIM_DETAIL(moimId),
-  //   queryFn: () => getDetail(moimId),
-  //   enabled: false,  // 직접 요청하지 않음
-  // });
 
   // 참여 취소 mutation
   const { mutateAsync: leaveMutation, isPending: isLeaving } = useMutation({
@@ -60,7 +54,7 @@ export const useJoinMoim = (moimId: string, options: IUseJoinMoimOptions = {}) =
 
     onSuccess: async (response) => {
       // 새로 받아온 데이터로 캐시 업데이트
-      await queryClient.setQueryData<IMoimDetail>(QUERY_KEYS.MOIM_DETAIL(moimId), response.data);
+      await queryClient.setQueryData<TMoimDetail>(QUERY_KEYS.MOIM_DETAIL(moimId), response.data);
       
       // 관련 쿼리 무효화
       queryClient.invalidateQueries({ queryKey: ['getParticipatedMoim']});
@@ -123,7 +117,7 @@ export const useJoinMoim = (moimId: string, options: IUseJoinMoimOptions = {}) =
     // 서버 응답 성공시
     onSuccess: async (response) => {
       // 모임 상세 데이터 캐시 업데이트
-      await queryClient.setQueryData<IMoimDetail>(QUERY_KEYS.MOIM_DETAIL(moimId), response);
+      await queryClient.setQueryData<TMoimDetail>(QUERY_KEYS.MOIM_DETAIL(moimId), response);
 
       // 내가 참여한 모임 목록 캐시 업데이트
       queryClient.invalidateQueries({ queryKey: ['getParticipatedMoim']});

@@ -1,10 +1,10 @@
 'use client';
 import { Header } from '../detail/Header';
 import MyLikeCards from '../mylike/MyLikeCards';
-import { IMoimDetail } from '@/types/detail/t-moim';
+import { TMoimDetail } from '@/types/detail/t-moim';
 
 interface IMyLikePresenter {
-  moims: IMoimDetail[];
+  moims: TMoimDetail[];
   onRemoveLike: (e: React.MouseEvent, moimId: string) => void;
   onClickCard: (moimId: string) => void;
 }

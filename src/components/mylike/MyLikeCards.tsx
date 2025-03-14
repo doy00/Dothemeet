@@ -1,10 +1,10 @@
 'use client';
 import { AnimatePresence } from 'framer-motion';
 import MyLikeCard from './MyLikeCard';
-import { IMoimDetail } from '@/types/detail/t-moim';
+import { TMoimDetail } from '@/types/detail/t-moim';
 
 interface IMyLikeCards {
-  moims: IMoimDetail[];
+  moims: TMoimDetail[];
   onRemoveLike: (e: React.MouseEvent, moimId: string) => void;
   onClickCard: (moimId: string) => void;
 }
