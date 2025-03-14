@@ -4,32 +4,9 @@ import { ERate } from "../supabase/supabase-custom.type";
 import { TMoimClient } from "../supabase/supabase-custom.type";
 
 // 모임 상세  (새로운 구조에 맞게 수정)
-// export type IMoimDetail = TMoimClient;
-export interface IMoimDetail extends TMoimClient {
-  image: string;
-//   moimId: string;
-//   title: string;
-//   content: string;
-//   address: string;
-//   createdAt: string;
-//   recruitmentDeadline: string;
-//   startDate: string;
-//   endDate: string;
-//   minParticipants: number;
-//   maxParticipants: number;
-//   moimType: ECategory;
-//   status: EMoimStatus;
-//   likes: number;
-//   participants: number;
-//   reviewsCount: number;
-//   isConfirmed: boolean;
-//   likedUsers: string[];
-//   participatedUsers: TParticipatedUserClient[];
-//   reviews: TReviewClient[];
-//   online: boolean;
-//   masterEmail: string;
-}
+export type IMoimDetail = TMoimClient;
 
+// 모임 주최자 응답
 export type IMoimMasterResponse = {
   moim: IMoimDetail;
   masterUser: TMe;
@@ -43,11 +20,6 @@ export interface IMoimListResponse {
     totalPages: number;
     currentPage: number;
   };
-}
-
-export interface ApiResponse<T> {
-  data: T;
-  message?: string;
 }
 
 // 참여자 (새로운 구조에 맞게 수정)
